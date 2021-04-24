@@ -8,10 +8,12 @@ from backend.analyse.helper.visualize import visualizeData
 from backend.analyse.CandleStick.Recognizer import Recognizer
 from backend.analyse.CandleStick.Predicter import Predicter
 
+import os
+
 def start():
     bootstrap()
 
-    fetchedData = historicalEuroDollar()
+    fetchedData = historicalDax()
 
     chart = Chart(fetchedData)
     transformer = Transformer()
