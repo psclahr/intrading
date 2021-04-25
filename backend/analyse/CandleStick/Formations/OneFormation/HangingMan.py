@@ -1,4 +1,4 @@
-from backend.analyse.CandleStick.Formations.OneFormation.AbstractOneFormation import AbstractOneFormation
+from backend.analyse.candleStick.formations.oneFormation.abstractOneFormation import AbstractOneFormation
 from backend.analyse.enums.CandleStickComparison import CandleStickComparison
 
 class HangingMan(AbstractOneFormation):

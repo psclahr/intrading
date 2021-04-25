@@ -1,7 +1,7 @@
 from datetime import datetime
 from backend.analyse.enums.Course import Course
 
-class Transformer():
+class ChartTransformer():
     def __init__(self):
         self.courses = [] 
 

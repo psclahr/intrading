@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
     const fetchSomeData = () => {
-        axios.get('http://localhost:8000/api/').then(response => console.log(response))
+        axios.get('http://localhost:8000/api/historical/dax').then(response => console.log(response))
     }
 
     fetchSomeData()

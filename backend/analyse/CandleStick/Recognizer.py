@@ -1,8 +1,8 @@
 from typing import Union
-from backend.analyse.CandleStick.Formations.OneFormation.InvertedHammer import InvertedHammer
-from backend.analyse.CandleStick.Formations.OneFormation.Hammer import Hammer
-from backend.analyse.CandleStick.Formations.OneFormation.HangingMan import HangingMan
-from backend.analyse.CandleStick.Formations.OneFormation.ShootingStar import ShootingStar
+from backend.analyse.candleStick.formations.oneFormation.invertedHammer import InvertedHammer
+from backend.analyse.candleStick.formations.oneFormation.hammer import Hammer
+from backend.analyse.candleStick.formations.oneFormation.hangingMan import HangingMan
+from backend.analyse.candleStick.formations.oneFormation.shootingStar import ShootingStar
 from backend.analyse.enums.CandleStick import CandleStick
 
 class Recognizer:

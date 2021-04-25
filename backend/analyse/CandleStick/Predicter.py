@@ -1,6 +1,6 @@
 import csv
 import numpy as np
-from backend.analyse.CandleStick.limitValues import FUTURE_COURSES_NUM
+from backend.analyse.candleStick.limitValues import FUTURE_COURSES_NUM
 
 class Predicter:
     def __init__(self, data: list):

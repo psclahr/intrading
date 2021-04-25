@@ -1,52 +1,35 @@
 from backend.analyse.bootstrap import bootstrap
-from backend.analyse.Courses.dax.fetch import historicalDax
-from backend.analyse.Courses.dax.fetch import historicalEuroDollar
-from backend.analyse.Courses.dax.fetch import historicalBitcoinDollar
-from backend.analyse.Courses.Chart import Chart
-from backend.analyse.Courses.Transformer import Transformer
-from backend.analyse.helper.visualize import visualizeData
-from backend.analyse.CandleStick.Recognizer import Recognizer
-from backend.analyse.CandleStick.Predicter import Predicter
-
-import os
 
 def start():
     bootstrap()
 
-    fetchedData = historicalDax()
+    # visualizeData(data)
 
-    chart = Chart(fetchedData)
-    transformer = Transformer()
+    # filteredData = list(filter(lambda day: day['open'] is not None , data))
 
-    data = transformer.transform(chart.timeStamps(), chart.openCourses(), chart.closeCourses(), chart.highCourses(), chart.lowCourses())
+    # candleStickRecognizer = Recognizer(filteredData)
 
-    visualizeData(data)
+    # candleSticks = {}
 
-    filteredData = list(filter(lambda day: day['open'] is not None , data))
+    # for index, day in enumerate(filteredData):
+      #   result = candleStickRecognizer.whichCandleStick(index)
 
-    candleStickRecognizer = Recognizer(filteredData)
+        # if result is not None:
+          #   name = result['name']
+            # index = result['index']
 
-    candleSticks = {}
+            # if name in candleSticks:
+              #   candleSticks[name].append(index)
+            # else:
+              #   candleSticks[name] = [index]
 
-    for index, day in enumerate(filteredData):
-        result = candleStickRecognizer.whichCandleStick(index)
+    # predicter = Predicter(filteredData)
 
-        if result is not None:
-            name = result['name']
-            index = result['index']
+    # predictions = {}
 
-            if name in candleSticks:
-                candleSticks[name].append(index)
-            else:
-                candleSticks[name] = [index]
+    # for candleStickName in candleSticks:
+      #   prediction = predicter.predict(candleSticks[candleStickName])
 
-    predicter = Predicter(filteredData)
+        # predictions[candleStickName] = prediction
 
-    predictions = {}
-
-    for candleStickName in candleSticks:
-        prediction = predicter.predict(candleSticks[candleStickName])
-
-        predictions[candleStickName] = prediction
-
-    return predictions
+    # return predictions
