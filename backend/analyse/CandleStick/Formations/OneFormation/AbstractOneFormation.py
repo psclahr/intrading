@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 import numpy as np
 from sklearn.linear_model import LinearRegression
-from backend.analyse.CandleStick.Creator import Creator
-from backend.analyse.CandleStick.limitValues import TREND, FORMATION_ACCORDANCE, PREVIOUS_COURSES_NUM
+from backend.analyse.candleStick.creator import Creator
+from backend.analyse.candleStick.limitValues import TREND, FORMATION_ACCORDANCE, PREVIOUS_COURSES_NUM
 
 class AbstractOneFormation(ABC):
     def __init__(self, data: list):

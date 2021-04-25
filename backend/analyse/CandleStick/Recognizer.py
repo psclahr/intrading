@@ -26,7 +26,7 @@ class Recognizer:
     def __isShootingStar(self, index: int) -> bool:
         return self.__isCandleStick(ShootingStar, index)
 
-    def whichCandleStick(self, index: int) -> Union[dict, None]:
+    def __whichCandleStick(self, index: int) -> Union[dict, None]:
         if self.__isInvertedHammer(index):
             print({'name': CandleStick.INVERTED_HAMMER.value, 'index': index, 'date': self.data[index]['date']})
             return {'name': CandleStick.INVERTED_HAMMER.value, 'index': index}
@@ -44,3 +44,20 @@ class Recognizer:
             return {'name': CandleStick.SHOOTING_STAR.value, 'index': index}
 
         return None
+
+    def recognize(self) -> dict:
+        candleSticks = {}
+
+        for index, day in enumerate(self.data):
+            result = self.__whichCandleStick(index)
+
+            if result is not None:
+                name = result['name']
+                index = result['index']
+
+                if name in candleSticks:
+                    candleSticks[name].append(index)
+                else:
+                    candleSticks[name] = [index]
+
+        return candleSticks

@@ -8,4 +8,13 @@ def historicalDax(request):
 
     chart = ChartRepository().getHistoricalDax()
 
-    return HttpResponse(chart)
+    return HttpResponse(json.dumps(chart, sort_keys=True, indent=4))
+
+def historicalDaxRecognition(request):
+    bootstrap()
+
+    chart = ChartRepository().getHistoricalDaxRecognition()
+
+    return HttpResponse(json.dumps(chart, sort_keys=True, indent=4))
+
+
