@@ -15,7 +15,7 @@ class ChartTransformer():
     def __addTimeStamp(self, timeStamps: list):
         for timestamp in timeStamps[:-1]:
             self.courses.append({
-                Course.DATE.value : datetime.fromtimestamp(timestamp).strftime("%d-%m-%Y")
+                Course.DATE.value : timestamp
             })
 
     def __addOpenCourse(self, openCourses: list):
