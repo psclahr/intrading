@@ -4,6 +4,7 @@ from backend.analyse.candleStick.formations.oneFormation.hammer import Hammer
 from backend.analyse.candleStick.formations.oneFormation.hangingMan import HangingMan
 from backend.analyse.candleStick.formations.oneFormation.shootingStar import ShootingStar
 from backend.analyse.enums.CandleStick import CandleStick
+from backend.analyse.enums.Course import Course
 
 class Recognizer:
     def __init__(self, data):
@@ -26,38 +27,28 @@ class Recognizer:
     def __isShootingStar(self, index: int) -> bool:
         return self.__isCandleStick(ShootingStar, index)
 
-    def __whichCandleStick(self, index: int) -> Union[dict, None]:
+    def __whichCandleStick(self, index: int, day: dict) -> Union[dict, None]:
         if self.__isInvertedHammer(index):
-            print({'name': CandleStick.INVERTED_HAMMER.value, 'index': index, 'date': self.data[index]['date']})
-            return {'name': CandleStick.INVERTED_HAMMER.value, 'index': index}
+            return {'name': CandleStick.INVERTED_HAMMER.value, 'date': day[Course.DATE.value]}
 
         if self.__isHammer(index):
-            print({'name': CandleStick.HAMMER.value, 'index': index, 'date': self.data[index]['date']})
-            return {'name': CandleStick.HAMMER.value, 'index': index}
+            return {'name': CandleStick.HAMMER.value, 'date': day[Course.DATE.value]}
 
         if self.__isHangingMan(index):
-            print({'name': CandleStick.HANGING_MAN.value, 'index': index, 'date': self.data[index]['date']})
-            return {'name': CandleStick.HANGING_MAN.value, 'index': index}
+            return {'name': CandleStick.HANGING_MAN.value, 'date': day[Course.DATE.value]}
 
         if self.__isShootingStar(index):
-            print({'name': CandleStick.SHOOTING_STAR.value, 'index': index, 'date': self.data[index]['date']})
-            return {'name': CandleStick.SHOOTING_STAR.value, 'index': index}
+            return {'name': CandleStick.SHOOTING_STAR.value, 'date': day[Course.DATE.value]}
 
         return None
 
     def recognize(self) -> dict:
-        candleSticks = {}
+        candleSticks = []
 
         for index, day in enumerate(self.data):
-            result = self.__whichCandleStick(index)
+            result = self.__whichCandleStick(index, day)
 
             if result is not None:
-                name = result['name']
-                index = result['index']
-
-                if name in candleSticks:
-                    candleSticks[name].append(index)
-                else:
-                    candleSticks[name] = [index]
+                candleSticks.append(result)
 
         return candleSticks
